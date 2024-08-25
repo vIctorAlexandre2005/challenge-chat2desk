@@ -6,11 +6,17 @@ export interface VariablesContextType {
     setIsLogged: Dispatch<SetStateAction<boolean>>;
     users: User[];
     setUsers: Dispatch<SetStateAction<User[]>>;
+    error: null | any;
+    setError: Dispatch<SetStateAction<null | any>>;
+    isLoading: boolean;
 }
 
 export const defaultValue: VariablesContextType = {
     isLogged: false,
     setIsLogged: () => { },
     users: [],
-    setUsers: () => { }
+    setUsers: () => { },
+    error: null,
+    setError: () => { },
+    isLoading: false
 };

@@ -1,25 +1,31 @@
 import { VariablesContextType, defaultValue } from "@/@types/context";
 import { User } from "@/@types/userData";
+import { getListContacts } from "@/services";
 import { useRouter } from "next/router";
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
+import { useQuery } from "react-query";
 
 const ParamsProvider = createContext<VariablesContextType>(defaultValue);
 
 const ParamsContext = ({ children }: { children: ReactNode }) => {
-
     const [isLogged, setIsLogged] = useState<boolean>(false);
-    const [users, setUsers] = useState<User[]>([]);
+    const { 
+        data: users = [], 
+        error, 
+        isError, 
+        isLoading 
+    } = useQuery<User[]>('users', getListContacts);
 
-    const router = useRouter(); 
+    const router = useRouter();
 
     useEffect(() => {
         const checkLogin = localStorage.getItem("isLoggedIn")
         if (!checkLogin) {
-          router.push("/login");
+            router.push("/login");
         } else {
             setIsLogged(true);
-        };
-      }, [isLogged]);
+        }
+    }, [isLogged, router]);
 
     return (
         <ParamsProvider.Provider
@@ -27,7 +33,10 @@ const ParamsContext = ({ children }: { children: ReactNode }) => {
                 isLogged,
                 setIsLogged,
                 users,
-                setUsers
+                error: isError,
+                setError: () => null,
+                isLoading,
+                setUsers: () => { },
             }}
         >
             {children}

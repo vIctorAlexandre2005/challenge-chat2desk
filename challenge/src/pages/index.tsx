@@ -1,15 +1,11 @@
-import { Contacts } from "@/Components/Contacts";
+import { ContactsList } from "@/Components/Contacts";
 import { useContextGlobal } from "@/Context";
 
 export default function Home() {
 
   const { isLogged } = useContextGlobal();
 
-  return (
-    <>
-    {isLogged && (
-      <Contacts />
-    )}
-    </>
-  );
+  if (isLogged) {
+    return <ContactsList />
+  };
 };
