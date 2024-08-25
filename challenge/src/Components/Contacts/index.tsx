@@ -2,21 +2,32 @@ import { useContextGlobal } from "@/Context";
 import { useRouter } from "next/router";
 import { useState } from "react";
 
+/**
+ * Componente que lista os contatos e permite navegação entre as páginas de contatos.
+ */
 export function ContactsList() {
-  const { users } = useContextGlobal();
-  const router = useRouter();
-  const [currentPage, setCurrentPage] = useState(1);
-  const usersPerPage = 5;
+  const { users } = useContextGlobal(); // Contexto que armazena a lista de contatos
+  const router = useRouter(); // Roteador do Next.js
+  const [currentPage, setCurrentPage] = useState(1); // Página atual
+  const contactsPerPage = 5; // Número de contatos por página
 
-  const totalPages = Math.ceil(users?.length / usersPerPage);
-  const startIndex = (currentPage - 1) * usersPerPage;
-  const endIndex = startIndex + usersPerPage;
-  const currentUsers = users?.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(users?.length / contactsPerPage); // Total de páginas
+  const startIndex = (currentPage - 1) * contactsPerPage; // Índice do primeiro contato da página atual
+  const endIndex = startIndex + contactsPerPage; // Índice do último contato da página atual
+  const currentUsers = users?.slice(startIndex, endIndex); // Contatos da página atual
 
+  /**
+   * Função que muda a página atual
+   * @param {number} newPage - Nova página
+   */
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
 
+  /**
+   * Função que redireciona para a página de detalhes do contato
+   * @param {number} userId - ID do contato
+   */
   const handleUserClick = (userId: number) => {
     router.push(`/user/${userId}`);
   };
@@ -57,7 +68,7 @@ export function ContactsList() {
       </div>
       <div className="flex justify-center mt-4">
         <ul className="inline-flex items-center -space-x-px">
-          {[...Array(totalPages)].map((_, index) => (
+          {[...Array(totalPages)].map((_, index) => ( // Cria as páginas
             <li key={index}>
               <button
                 onClick={() => handlePageChange(index + 1)}
