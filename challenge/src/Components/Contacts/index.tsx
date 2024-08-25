@@ -33,12 +33,12 @@ export function ContactsList() {
   };
 
   return (
-    <div className="flex flex-col justify-center w-full p-10">
+    <div className="flex flex-col justify-center w-full p-8">
       <h3 className="text-xl font-medium mb-4">Meus contatos ({users?.length})</h3>
       <div className="w-full">
         <table className="min-w-full bg-white shadow-md text-center h-4/5 rounded-xl overflow-hidden">
           <thead className="bg-neon-500">
-            <tr className="text-center">
+            <tr className="text-left">
               <th className="py-3 px-4 text-neon-50 font-bold">Nome</th>
               <th className="py-3 px-4 text-neon-50 font-bold">Email</th>
             </tr>
@@ -50,17 +50,17 @@ export function ContactsList() {
                 onClick={() => handleUserClick(user.id)}
                 className="border-b hover:bg-gray-100 hover:underline transition duration-200"
               >
-                <td className="p-4 flex justify-center">
-                  <div className="flex items-center gap-4">
+                <td className="py-3 px-4 flex">
+                  <div className="flex items-center gap-2">
                     <img
                       src={user?.photo}
                       alt={user?.name}
                       className="rounded-full h-12"
                     />
-                    {user?.name}
+                    <p className="">{user?.name}</p>
                   </div>
                 </td>
-                <td className="p-4 text-center">{user?.email}</td>
+                <td className="py-3 px-4 text-left">{user?.email}</td>
               </tr>
             ))}
           </tbody>

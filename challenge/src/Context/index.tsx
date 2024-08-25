@@ -25,7 +25,7 @@ const ParamsContext = ({ children }: { children: ReactNode }) => {
         } else {
             setIsLogged(true);
         }
-    }, [isLogged, router]);
+    }, []);
 
     return (
         <ParamsProvider.Provider

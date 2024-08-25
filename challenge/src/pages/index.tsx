@@ -1,5 +1,7 @@
 import { ContactsList } from "@/Components/Contacts";
+import { Loader } from "@/Components/Loader";
 import { useContextGlobal } from "@/Context";
+import { PulseLoader } from "react-spinners";
 
 export default function Home() {
 
@@ -8,8 +10,7 @@ export default function Home() {
   // If the user is logged in, render the list of contacts
   if (isLogged) {
     return <ContactsList />;
+  } else {
+    return <Loader />
   };
-
-  // If the user is not logged in, render the login page
-  return <></>;
 };
