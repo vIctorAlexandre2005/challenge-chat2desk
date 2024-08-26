@@ -99,7 +99,7 @@ export function LoginComponent() {
                 Veja <a 
                     href="https://github.com/vIctorAlexandre2005" 
                     target="_blank"
-                    className="text-neon-500 font-semibold hover:underline">aqui </a> o nome de usu rio e a senha de acesso </p>
+                    className="text-neon-500 font-semibold hover:underline">aqui </a> o nome de usuário e a senha de acesso </p>
             </div>
             <button
               type="submit"
