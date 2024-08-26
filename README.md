@@ -21,8 +21,9 @@ Etapas para instalar:
 - Feito isso terminal do vscode ou de seu dispositivo, digite `git clone (link deste repositorio)` <br />
 - Aguarde a instalação... <br />
 - Feito isso, digite `cd challenge-chat2desk` <br />
+- Após, digite `code .` <br  />
 - Após isso, digite `yarn install` ou `npm install` <br />
-- E pronto! <br />
+- E pronto! Agora, para rodar localmente, digite `yarn dev` ou `npm run dev` <br />
 
 ## 📦 Tecnologias usadas:
 NextJS - para melhor performance <br/>
