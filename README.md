@@ -16,7 +16,7 @@ Senha: password123
 Etapas para instalar:
 
 - Copie o link deste repositorio <br />
-- Abra seu terminal ou abra o seu VSCode <br />
+- Abra seu terminal do próprio dispositivo ou abra o terminal de seu VSCode <br />
 - Navegue até a sua pasta de preferência onde ficará este projeto <br />
 - Feito isso terminal do vscode ou de seu dispositivo, digite `git clone (link deste repositorio)` <br />
 - Aguarde a instalação... <br />
