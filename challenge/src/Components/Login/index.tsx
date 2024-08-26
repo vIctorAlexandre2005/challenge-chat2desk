@@ -84,7 +84,7 @@ export function LoginComponent() {
               <InputComponent
                 value={username}
                 onChange={handleUsernameChange}
-                title="Usu rio"
+                title="Usuário"
                 placeholder="chat2desk"
                 type="text"
               />
