@@ -40,8 +40,8 @@ describe('LoginComponent', () => {
 
     expect(screen.getByText('Bem-vindo!')).toBeInTheDocument();
     expect(screen.getByText('Faça login')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('testchallenge')).toBeInTheDocument();
-    expect(screen.getByPlaceholderText('123456')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('chat2desk')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('password123')).toBeInTheDocument();
     expect(screen.getByRole('button', { name: /entrar/i })).toBeInTheDocument();
   });
 
@@ -50,7 +50,7 @@ describe('LoginComponent', () => {
 
     fireEvent.click(screen.getByRole('button', { name: /entrar/i }));
 
-    expect(toastError).toHaveBeenCalledWith('Preencha todos os campos');
+    expect(toastError).toHaveBeenCalledWith('Por favor, preencha todos os campos');
     expect(setIsLogged).not.toHaveBeenCalled();
     expect(push).not.toHaveBeenCalled();
   });
@@ -60,10 +60,10 @@ describe('LoginComponent', () => {
 
     render(<LoginComponent />);
 
-    fireEvent.change(screen.getByPlaceholderText('testchallenge'), {
+    fireEvent.change(screen.getByPlaceholderText('chat2desk'), {
       target: { value: 'correctUser' },
     });
-    fireEvent.change(screen.getByPlaceholderText('123456'), {
+    fireEvent.change(screen.getByPlaceholderText('password123'), {
       target: { value: 'correctPassword' },
     });
 
@@ -73,7 +73,7 @@ describe('LoginComponent', () => {
     expect(toastSuccess).toHaveBeenCalledWith('Login efetuado com sucesso!');
     expect(setIsLogged).toHaveBeenCalledWith(true);
     expect(push).toHaveBeenCalledWith('/');
-    expect(localStorage.getItem('isLoggedIn')).toBe('true');
+    expect(localStorage.getItem('isLogged')).toBe('true');
   });
 });
 

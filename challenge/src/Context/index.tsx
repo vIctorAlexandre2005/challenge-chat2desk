@@ -1,5 +1,6 @@
 import { VariablesContextType, defaultValue } from "@/@types/context";
 import { User } from "@/@types/userData";
+import { Loader } from "@/Components/Loader";
 import { getListContacts } from "@/services";
 import { useRouter } from "next/router";
 import { Dispatch, ReactNode, SetStateAction, createContext, useContext, useEffect, useState } from "react";
@@ -19,13 +20,17 @@ const ParamsContext = ({ children }: { children: ReactNode }) => {
     const router = useRouter();
 
     useEffect(() => {
-        const checkLogin = localStorage.getItem("isLoggedIn")
+        const checkLogin = localStorage.getItem("isLogged")
         if (!checkLogin) {
             router.push("/login");
         } else {
             setIsLogged(true);
-        }
+        };
     }, []);
+
+    if (isLoading) {
+        return <Loader />
+    };
 
     return (
         <ParamsProvider.Provider

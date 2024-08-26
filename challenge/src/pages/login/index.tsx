@@ -4,9 +4,9 @@ import { useContextGlobal } from "@/Context";
 
 export default function Login() {
 
-    const { isLogin } = useContextGlobal();
+    const { isLogged } = useContextGlobal();
 
-    if (isLogin) {
+    if (isLogged) {
         return <IsLogged />
     } else {
         return <LoginComponent />

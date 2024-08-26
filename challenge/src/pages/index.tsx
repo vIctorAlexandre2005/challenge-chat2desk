@@ -10,7 +10,5 @@ export default function Home() {
   // If the user is logged in, render the list of contacts
   if (isLogged) {
     return <ContactsList />;
-  } else {
-    return <Loader />
-  };
+  }
 };

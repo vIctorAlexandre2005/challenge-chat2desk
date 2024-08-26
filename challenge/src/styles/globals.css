@@ -4,6 +4,23 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+  @keyframes float {
+    0% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-25px);
+    }
+    100% {
+      transform: translateY(0px);
+    }
+  }
+  .animate-float {
+    animation: float 2s ease-in-out infinite;
+  }
+}
+
 * {
   font-family: 'Poppins', sans-serif;
   margin: 0;

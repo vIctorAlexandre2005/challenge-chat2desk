@@ -1,12 +1,13 @@
 import { useContextGlobal } from "@/Context";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { Loader } from "../Loader";
 
 /**
  * Componente que lista os contatos e permite navegação entre as páginas de contatos.
  */
 export function ContactsList() {
-  const { users } = useContextGlobal(); // Contexto que armazena a lista de contatos
+  const { users, isLoading } = useContextGlobal(); // Contexto que armazena a lista de contatos
   const router = useRouter(); // Roteador do Next.js
   const [currentPage, setCurrentPage] = useState(1); // Página atual
   const contactsPerPage = 5; // Número de contatos por página
@@ -18,7 +19,6 @@ export function ContactsList() {
 
   /**
    * Função que muda a página atual
-   * @param {number} newPage - Nova página
    */
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -26,14 +26,13 @@ export function ContactsList() {
 
   /**
    * Função que redireciona para a página de detalhes do contato
-   * @param {number} userId - ID do contato
    */
   const handleUserClick = (userId: number) => {
     router.push(`/user/${userId}`);
   };
-
+  
   return (
-    <div className="flex flex-col justify-center w-full p-8">
+    <div className="flex flex-col justify-center w-full xs:p-0 sm:p-8">
       <h3 className="text-xl font-medium mb-4">Meus contatos ({users?.length})</h3>
       <div className="w-full">
         <table className="min-w-full bg-white shadow-md text-center h-4/5 rounded-xl overflow-hidden">
@@ -44,7 +43,7 @@ export function ContactsList() {
             </tr>
           </thead>
           <tbody>
-            {currentUsers?.map((user) => (
+              {currentUsers?.map((user) => (
               <tr
                 key={user.id}
                 onClick={() => handleUserClick(user.id)}
@@ -57,10 +56,10 @@ export function ContactsList() {
                       alt={user?.name}
                       className="rounded-full h-12"
                     />
-                    <p className="">{user?.name}</p>
+                    <p className="xs:text-xs sm:text-lg">{user?.name}</p>
                   </div>
                 </td>
-                <td className="py-3 px-4 text-left">{user?.email}</td>
+                <td className="py-3 px-4 xs:text-xs sm:text-lg text-left">{user?.email}</td>
               </tr>
             ))}
           </tbody>
